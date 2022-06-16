@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="items">
+            pay $100
+            <button type="button" id="start-payment-button" onclick="makePayment(100,'email@email.com','Mr Oscar Tester')">Pay Now</button>
+
+    </div>
+    <div class="items">
+        pay $200
+            <button type="button" id="start-payment-button" onclick="makePayment(200,'email@email.com','Mr Oscar Tester')">Pay Now</button>
+
+    </div>
+    <div class="items">
+        pay $300
+            <button type="button" id="start-payment-button" onclick="makePayment(300,'email@email.com','Mr Oscar Tester')">Pay Now</button>
+
+    </div>
+</body>
+</html>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script>
+  function makePayment(price,email,name) {
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK_TEST-c22197f552879d58fc3db046f4bfe6cf-X",
+      tx_ref: "titanic-48981487343MDI0NzMx"+new Date().getUTCDate.toString(),
+      amount: price,
+      currency: "NGN",
+      payment_options: "card, banktransfer, ussd",
+      redirect_url: "www.google.com",
+     
+      customer: {
+        email: email,
+        phone_number: "08102909304",
+        name: name,
+      },
+      customizations: {
+        title: "dee styling",
+        description: "testing ",
+        logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+      },
+    });
+  }
+</script>

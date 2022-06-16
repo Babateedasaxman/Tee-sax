@@ -1,0 +1,495 @@
+
+*{
+    padding:0;
+    margin: 0;
+    border: 0;
+}
+
+body{
+    background: whitesmoke;
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500;
+}
+
+h1,h2,h3{
+ color: #ef8172;
+ font-weight: 700;
+ font-family: sofia; 
+}
+
+img{
+    max-width: 100%;
+}
+
+/* components*/
+.sub-heading1{
+    font-family: "Pinyon script";
+    font-size: 4.5rem;
+    margin: auto;
+    text-align: center;
+}
+
+.sub-heading2{
+ font-family: "pinyon script", cursive;
+ font-size: 2.5rem;
+ margin: auto;
+ text-align: center;
+}
+
+.main-div{
+    padding: 2rem;
+
+}
+
+.home-div{
+    background-image: url(images/frame2.jpg);
+    height: 25vh;
+    background-attachment: fixed;
+    background-position:0%;
+    background-size: cover;
+    
+    }    
+    
+   
+
+.gallery-div{
+background-image:url(images/wools.jpg);
+height: 25vh;
+background-attachment: fixed;
+background-position-y:center;
+background-size: cover;
+}
+.about-div{
+    background-image:url(images/wools.jpg);
+height: 25vh;
+background-attachment: fixed;
+background-position-y:center;
+background-size: cover;
+}
+
+blockquote {
+border:none;
+font-family:Georgia, "Times New Roman", Times, serif;
+margin: bottom -15px;
+}
+
+blockquote  {
+    font-size:1.5rem;
+}
+
+blockquote :before { 
+    content: "";
+    font-weight: bold;
+    font-size:100px;
+    color:#889c0b;
+} 
+blockquote :after { 
+    content: "";
+    font-weight: bold;
+    font-size:100px;
+    color:#889c0b;
+}
+
+
+.Eighty-percent{
+    width: 80%;
+    margin:auto
+ }
+
+
+ /*..nav section..*/
+
+.navbar {
+    list-style: none;
+    margin: auto;
+    
+}
+
+.navbar-brand-logo {
+    width: 200px;
+    height: 60px;
+    font-weight: 100;
+    border-radius: 5px;
+    margin-left: 2px;
+    
+    
+    }
+    .nav-link {
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #F9F9F9;
+        transition: 0.8s ease-in-out;
+        
+    }
+
+   .nav-link:hover {
+    color: hwb(325 70% 5% / 0.932);
+    cursor: pointer;
+    transition: ease-in-out 0.5;
+}
+
+    button {
+        color: white;
+        background-color: palevioletred;
+        border-radius: 7px;
+    
+    }
+    button:hover {
+        color: white;
+        
+    }
+   
+/* home */
+.home{
+    margin:auto;
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/beautiful\ lady\ dress.jpg);
+    background-repeat: no-repeat;
+    background-position:top;
+    background-size:cover;
+    font-family: serif;
+    font-weight: 400;
+    font-size: 60px;
+     
+   }
+
+   .home-welcome {
+    display: flex;
+    background-color: #4f0855;
+    transform: rotate(18deg);
+    border-top-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    width: 260px;
+    height: 85px;
+    float: right;
+    font-size: 18px;
+    align-items: center;
+    align-self: center;
+    color: #F9F9F9;
+    padding: 5px;
+    margin-right: 190px;
+    margin-top: 30px;
+    }
+
+    .home-rotate {
+        transform: rotate(15%);
+    }
+
+   
+   .home-text{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    animation-fill-mode: both;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 10px 15px 17px white;
+    float: left;
+    
+           
+   }
+   
+   
+   @media(max-width: 900px){
+     .home-div  {
+
+        display: none;
+       }
+   }
+   
+/* Services section */
+
+.services{
+    line-height: 1.8rem;
+   }
+   
+   .services-list{
+   
+        padding:1.5rem;
+        margin-top: 1.5rem;
+        color:rgb(27, 26, 26);
+        
+       
+   }
+   
+   .services-list p{
+       margin-bottom: 25px;
+       font-family: 'Times New Roman', Times, serif;
+       font-size: 1.2rem;
+
+   }
+   
+   .services-list img{
+       height: 300px;
+       width: 300px;
+       border-radius: 5%;
+       object-fit:cover;
+       
+   }
+   
+    /*..Gallery section..*/
+
+    .container ::before,
+    .container ::after {
+        box-sizing: border-box;
+    }
+    
+    .container{
+        max-width: 100rem;
+        margin-inline: auto;
+        padding: 2rem;
+        min-height: 100vh;
+        line-height: 1.5;
+    }
+
+    .stacked {
+        display: grid;
+    }
+
+    .stacked > * {
+
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .product-grid {
+        display: grid;
+        gap: .5rem;
+        grid-template-columns: 
+        repeat(auto-fit, minmax(18rem, 1fr));
+    }
+    .card {
+    
+        aspect-ratio: 1/1.45;
+    }
+
+    .card-content {
+        background: white;
+        align-self: end;
+        align-items: center;
+        margin: 1rem .1rem 1rem;
+        box-shadow: 0.5rem 1rem rgb(0 0 0 .5);
+        padding: 1.7rem;
+    
+    }
+
+    
+
+
+    @media (min-width: 40em){
+        .card.featured{
+            grid-row: span 2;
+            grid-column: span 2;
+        }
+    
+      .card_image {
+            width: 100%;
+            display: block;
+            aspect-ratio: 1/1;
+            object-fit: fill;
+            opacity: 0.5;
+            
+        }
+    
+        .card_image:hover {
+            opacity: 2;
+        }
+
+
+
+        .card-title {
+            font-family: 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 2rem;
+            font-weight: 200;
+            font:bold;
+            line-height: .3;
+            color: firebrick;
+            align-content: center;
+            margin:auto;
+            width: auto;
+        }
+        .card-price {
+            font-family: sans-serif;
+            font-weight: 200;
+            font-size: 2rem;
+            font: bolder;
+            text-align: left;
+            padding-top: 10px;
+        }
+        
+        .btn:hover{
+            color: firebrick;
+            transition: ease-in-out 7ms;
+        }
+
+    }
+    
+    /* testimonials */
+.testimonials{
+    background-color:lightgrey;
+    color: #b76e79;
+
+  }
+  
+  .testimony{
+  
+      min-height:50vh;
+      padding-top: 2rem;
+  }
+  
+  .testimony img{
+      height: 400px;
+      margin:auto 2rem auto auto;
+      float: left;
+      border-radius: 10% ;
+      
+  }
+ 
+  
+  /* About section */
+    
+  .about{
+    background:pink;
+    min-height: 100vh;
+    
+    }
+    .about-content {
+        display: flex;
+        justify-content:space-between;
+        margin: auto;
+    }
+    
+    .about img{
+        width: 400px;
+        height: 400px;
+        border-radius: 45% 25% 45% 25%;
+        object-fit: cover;  
+    }
+    
+    .about p{
+        padding-left: 64px;
+        font-size: 23px;
+        color:white;
+    }
+    
+    
+    @media(max-width:900px){
+        .about-content{
+          flex-direction: column;
+        }
+        .about img{
+            width: 100%;
+            height: 100%;
+            margin:auto;
+            box-shadow: none;
+            padding: 1rem;
+            border-radius: 20px;
+    
+        }
+    }
+    
+
+    /*.... Social section....*/
+
+    footer{
+        background-color: slategrey;
+        text-align: center;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        color:#F9F9F9;
+        width: 100%;
+        height: auto;
+        
+    }
+    
+    footer span{
+        
+        min-width:150px;
+       
+    }
+    
+    
+    .socials{
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        
+    }
+    
+    footer a{
+        color:#F9F9F9;
+    }
+    
+    @media(max-width:900px){
+        .socials{
+            display:flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: auto ;
+            width: 100%;
+        }
+    
+        footer span{
+            
+            margin:.5rem auto;
+            text-align: left;
+            width: max-content;
+           
+        }
+    
+    }
+
+
+     /*...Animation section...*/
+     
+     .home-animation {
+        width: 287px;
+        height: 90px;
+        background-image: url(images/frameadvert.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+       
+        border-bottom: 100px solid none;
+        border-radius: 15px 95% 0 0;
+        text-align: center;
+        align-items: center;
+        color: rgb(3, 3, 34);
+        padding-top: 55px;
+        font-size: 20px;
+        margin: 20px, 20px, 10px 50px;
+        background-color: aquamarine;
+        object-fit: contain;
+        position: relative;
+        animation:myfirst 15s backwards 15s infinite alternate; 
+        z-index: 1;  
+        
+        }
+    
+    @keyframes myfirst {
+        0% {
+            background-color: rgb(78, 7, 78); left:0px; right: 0px;
+        }
+        25% {
+            background-color: pink; left: 1050px; right: 0px;
+        }
+        50% {
+            background-color: plum; left: 1050px; right: 100px;
+        }
+        75% {
+            background-color: peachpuff; left: 0px; right: 100px;
+        }
+        100% {
+            background-color: rgb(95, 5, 95); left: 100px; right: 50px;
+        }
+    }
+    
+    @media(max-width:900px){
+        .home-animation{
+            display:none;
+        }
+
+    }
+
+    
+   
