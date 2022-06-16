@@ -1,0 +1,104 @@
+<%-include('header')%>
+
+<style>
+    .items-card{
+           width: 250px;
+           height: fit-content;
+           box-shadow: -1px 2px 5px  ;
+       }
+
+       .items-card img{
+           max-width: 100%;
+           height:200px;
+       }
+
+       .info{
+           color:purple;
+           font-weight: 600;
+       }
+</style>
+
+
+<div class="market major-div">
+    <h1 class="sh-1">Shop</h1>
+    <div class="shop-message">
+
+    </div>
+    <div class="market-items grid">
+        <!-- allItems.forEach -->
+        <%if(allItems){%>
+            <%allItems.forEach((eachItem)=>{%>
+                <%if(eachItem.quantity > 0){%>
+                    <!-- individual item cards that are available-->
+                    <div class="items-card">
+                        <img src="<%=eachItem.image%>" alt="item-image">
+                        <ul>
+                            <li><span class="info"><!--name--></span><%=eachItem.name%></li>
+                            <li><span class="info"><!--name-->price: </span> <%=eachItem.price%> </li>
+                            <li><span class="info"><!--name-->description: </span><%=eachItem.description%></li>
+                            <li><span class="info"><!--name-->Available quantity: </span><%=eachItem.quantity%></li>
+            
+                            <form action="/orders/cart-add" method="post">
+                                <input type="hidden" name="id" value="<%=eachItem._id%>">
+                                <input type="number" name="quantity" id="quantity" placeholder="quantity">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-warning">add to cart <i class="fa fa-shopping-cart"></i></button>
+                            </form>              
+            
+                        </ul>
+                    </div>
+                <%}%>
+                
+            <%})%>
+        <%}%>
+
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"><!--name--></span>product name</li>
+                <li><span class="info"><!--name-->price: </span> #10000</li>
+                <li><span class="info"><!--name-->description: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ratione maxime possimus,
+                     esse reprehenderit ad nobis ea consectetur quidem magni?</li>
+                <li><span class="info"><!--name-->Available quantity: </span>20</li>
+
+                <form action="/orders/car-add">
+                    <input type="hidden" name="id" value="id">
+                    <input type="number" name="quantity" id="quantity" placeholder="quantity">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-warning">add to cart <i class="fa fa-shopping-cart"></i></button>
+                </form>              
+
+            </ul>
+        </div>
+
+        <div class="items-card">
+            <img src="/images/frame2.jpg" alt="">
+            <ul>
+                <li><span><!--name--></span>product name</li>
+                <li><span><!--name-->price: </span> #10000</li>
+                <li><span><!--name-->description: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ratione maxime possimus,
+                     esse reprehenderit ad nobis ea consectetur quidem magni?</li>
+                <li><span><!--name-->quantity: </span>20</li>
+                
+
+            </ul>
+        </div>
+        <div class="items-card">
+            <img src="/images/frame2.jpg" alt="">
+            <ul>
+                <li><span><!--name--></span>product name</li>
+                <li><span><!--name-->price: </span> #10000</li>
+                <li><span><!--name-->description: </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ratione maxime possimus,
+                     esse reprehenderit ad nobis ea consectetur quidem magni?</li>
+                <li><span><!--name-->quantity: </span>20</li>
+                
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%-include('footer')%>
+

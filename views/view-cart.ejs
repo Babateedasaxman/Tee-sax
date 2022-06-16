@@ -1,0 +1,215 @@
+<%-include('header')%>
+
+<style>
+    .items-card{
+           width: 250px;
+           height: fit-content;
+           box-shadow: -1px 2px 5px  ;
+       }
+
+       .items-card img{
+           max-width: 100%;
+           height:200px;
+       }
+
+       .info{
+           color:purple;
+           font-weight: 600;
+       }
+</style>
+
+
+<div class="market major-div">
+    <div class="checkout">
+        <h1 class="sh-1">Cart <i class="fa fa-shopping-cart"></i></h1> 
+          
+        <!-- this button contains the payment details except the total price calculated in 
+        the accociated js file(cart.js) -->
+            <button id="checkout-button" class="btn btn-warning" name="<%=user.Fullname%>" email="<%=user.Email%>" number="<%=user.Phoneno%>">pay and checkout <i class="fa fa-check-circle"></i></button>
+    
+
+    </div>
+    
+    <div class="shop-message">
+
+    </div>
+    <div class="market-items grid major-div">
+
+        <!-- allItems.forEach -->
+        <%if(cart && quantity && cart.length == quantity.length){%>
+            <% for(let i = 0 ; i < cart.length; i++){%>
+                <div class="items-card">
+                    <!-- make each card and anchor tag to get one of specific item -->
+                    <img src="<%=cart[i].image%>" alt="">
+                    <ul>
+                        <li><span class="info"><!--name--></span><%=cart[i].name%></li>
+                        <li><span class="info ">price: </span># <span class="price"><%=cart[i].price%></span></li>
+                        <li><span class="info ">quantity:</span> <span class="quantity"><%=quantity[i]%></span> </li>
+        
+                        <a href="/orders/cart-remove/<%=cart[i]._id%>"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+        
+                    </ul>
+                </div>
+            <%}%>
+        <%}else{%>
+            <h1 class="sh-1">Sorry something went wrong</h1>
+        <%}%>
+
+        <!-- <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">2</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div>
+
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                 <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">2</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div>
+
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">3</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div>
+
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">2</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div>
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">2</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div>
+
+        <div class="items-card">
+            <img src="/images/fashionStore.jpg" alt="">
+            <ul>
+                <li><span class="info"></span>Item name</li>
+                <li><span class="info ">price: </span># <span class="price">1000</span></li>
+                <li><span class="info ">quantity:</span> <span class="quantity">2</span> </li>
+
+                <a href="#"><button class="btn btn-danger">remove from cart<i class="fa fa-trash"></i></button></a>            
+
+            </ul>
+        </div> -->
+
+        
+    </div>
+</div>
+
+<%-include('footer')%>
+<script src="https://checkout.flutterwave.com/v3.js"></script>  
+<!-- <script src="/cart.js"></script> -->
+<script>
+
+const paymentButton = document.querySelector('#checkout-button')
+let price;
+const phoneNo = paymentButton.getAttribute('number')
+const email = paymentButton.getAttribute('email')
+const UsersName = paymentButton.getAttribute('name')
+const priceArr = document.querySelectorAll('.price')
+const quantityArr = document.querySelectorAll('.quantity')
+const totalArr = []
+let totalPrice = 0;
+
+for(let i = 0; i < priceArr.length; i ++){
+
+
+    totalArr.push(parseFloat(priceArr[i].innerText)*(parseFloat(quantityArr[i].innerText)))
+    totalPrice += totalArr[i]
+    console.log(totalPrice)
+}
+
+
+console.log(priceArr)
+
+paymentButton.addEventListener('click',makePayment)
+
+function makePayment() {
+    fetch("/orders/create-order",
+    {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({price:totalPrice})
+    })
+    .then(res=>{
+        if(res.status == 200)
+        {
+            FlutterwaveCheckout({
+  public_key: "FLWPUBK_TEST-c22197f552879d58fc3db046f4bfe6cf-X",
+  tx_ref: "titanic-48981487343MDI0NzMx"+new Date().getUTCDate.toString(),
+  amount: totalPrice,
+  currency: "NGN",
+  payment_options: "card, banktransfer, ussd",
+  redirect_url: "/orders/success",
+ 
+  customer: {
+    email: email,
+    phone_number: '12345506060',
+    name: UsersName,
+  },
+  customizations: {
+    title: "Dee styling",
+    description: "testing ",
+    logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+  },
+});
+        }
+    })
+    
+    
+
+
+}
+
+
+//   checkoutForm.addEventListener('submit',(e)=>{
+//     e.preventDefault()
+//     fetch("/orders/create-order",
+//     {
+//         headers: {
+//           'Accept': 'application/json',
+//           'Content-Type': 'application/json'
+//         },
+//         method: "POST",
+//         body: JSON.stringify({price:priceInt})
+//     })
+
+// })
+</script>
